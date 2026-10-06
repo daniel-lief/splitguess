@@ -1,0 +1,154 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #f8fafc;
+  background: #07111f;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+html, body, #app { width: 100%; min-height: 100%; margin: 0; }
+body { min-height: 100vh; overflow-x: hidden; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(79, 70, 229, .22), transparent 32rem),
+    radial-gradient(circle at 85% 75%, rgba(14, 165, 233, .16), transparent 30rem),
+    #07111f;
+}
+
+.center-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+
+.card {
+  width: min(760px, 100%);
+  background: rgba(11, 24, 41, .88);
+  border: 1px solid rgba(148, 163, 184, .18);
+  border-radius: 28px;
+  padding: 34px;
+  box-shadow: 0 32px 80px rgba(0,0,0,.35);
+  backdrop-filter: blur(18px);
+}
+
+.brand { font-size: 15px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #93c5fd; }
+h1 { font-size: clamp(38px, 7vw, 68px); line-height: .98; margin: 12px 0 14px; letter-spacing: -.055em; }
+h2 { margin: 0; font-size: 22px; }
+p { color: #b7c4d6; line-height: 1.6; }
+
+.role-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; margin: 26px 0; }
+.role-card {
+  text-align: left;
+  border: 1px solid rgba(148,163,184,.18);
+  color: inherit;
+  border-radius: 20px;
+  padding: 20px;
+  background: rgba(255,255,255,.035);
+  transition: .16s ease;
+}
+.role-card:hover { transform: translateY(-2px); border-color: rgba(96,165,250,.55); }
+.role-card.selected { border-color: #60a5fa; background: rgba(37,99,235,.16); box-shadow: inset 0 0 0 1px rgba(96,165,250,.22); }
+.role-title { display: block; font-size: 20px; font-weight: 800; margin-bottom: 7px; }
+.role-desc { color: #9fb0c4; font-size: 14px; line-height: 1.5; }
+
+.primary, .secondary {
+  border: 0;
+  border-radius: 14px;
+  padding: 13px 18px;
+  font-weight: 800;
+}
+.primary { background: #f8fafc; color: #07111f; }
+.primary:disabled { opacity: .35; cursor: not-allowed; }
+.secondary { background: rgba(255,255,255,.08); color: #f8fafc; border: 1px solid rgba(148,163,184,.16); }
+.action-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.note { font-size: 13px; color: #8192a8; }
+
+.game { min-height: 100vh; display: grid; grid-template-rows: auto 1fr; }
+.topbar {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 12px 20px;
+  background: rgba(7,17,31,.96);
+  border-bottom: 1px solid rgba(148,163,184,.15);
+  z-index: 10;
+}
+.topbar-left, .topbar-right { display: flex; align-items: center; gap: 14px; }
+.round-label { color: #cbd5e1; font-weight: 700; font-size: 14px; }
+.role-pill { border-radius: 999px; padding: 7px 11px; background: rgba(96,165,250,.13); color: #bfdbfe; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.timer { min-width: 74px; text-align: center; font-size: 26px; font-weight: 800; letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+.timer.urgent { color: #fca5a5; }
+.score-box { color: #cbd5e1; font-size: 13px; }
+.score-box strong { color: white; font-size: 17px; margin-left: 4px; }
+
+.stage { position: relative; min-height: 0; height: calc(100vh - 70px); }
+#pano, #map { width: 100%; height: 100%; }
+
+.map-overlay {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(7,17,31,.91);
+  border: 1px solid rgba(148,163,184,.18);
+  color: #e2e8f0;
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none;
+  box-shadow: 0 12px 40px rgba(0,0,0,.28);
+}
+
+.result-panel {
+  position: absolute;
+  left: 22px;
+  bottom: 22px;
+  width: min(390px, calc(100% - 44px));
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(7,17,31,.94);
+  border: 1px solid rgba(148,163,184,.18);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  z-index: 5;
+}
+.result-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 14px 0 16px; }
+.metric { padding: 12px; border-radius: 12px; background: rgba(255,255,255,.05); }
+.metric-label { display: block; color: #8495ab; font-size: 11px; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+.metric-value { display: block; margin-top: 4px; font-weight: 800; font-size: 19px; }
+
+.loading, .error-box { min-height: 100vh; display: grid; place-items: center; padding: 24px; text-align: center; }
+.error-box .card { max-width: 680px; }
+code { padding: .15em .4em; border-radius: 7px; background: rgba(255,255,255,.08); color: #dbeafe; }
+
+@media (max-width: 640px) {
+  .role-grid { grid-template-columns: 1fr; }
+  .card { padding: 24px; border-radius: 22px; }
+  .topbar { min-height: 64px; padding: 10px 12px; }
+  .stage { height: calc(100vh - 64px); }
+  .score-box { display: none; }
+  .result-grid { grid-template-columns: 1fr; }
+  .result-panel { left: 12px; bottom: 12px; width: calc(100% - 24px); }
+}
+
+
+/* Explorer result screen overlays the persistent panorama instead of replacing it. */
+.explorer-result-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+.explorer-result-map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
